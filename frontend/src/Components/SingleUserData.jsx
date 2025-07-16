@@ -33,26 +33,36 @@ export default function SingleUserData() {
     fetchData();
   }, []);
 
-  if (loading) return <p className="text-center mt-10">Loading...</p>;
-  if (!user) return <p className="text-center mt-10">No user data found.</p>;
+  if (loading)
+    return (
+      <div className="flex justify-center items-center min-h-[60vh]">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+      </div>
+    );
+  if (!user)
+    return (
+      <p className="text-center mt-10 text-gray-500 text-lg font-medium">No user data found.</p>
+    );
 
   return (
-    <div className="flex min-h-screen mx-auto justify-center items-center bg-[#fffbfbed] py-12 px-4">
-      <div className=" max-w-md w-full space-y-8">
-        <div className="bg-[white] py-8 px-6 shadow-2xl rounded-lg mb-0 space-y-5 text-center">
-          <img
-            src={image}
-            alt="Dog"
-            className="w-32 h-32 mx-auto rounded-full mb-4"
-          />
-          <h2 className="text-xl font-semibold  text-gray-700 mb-0">
+    <div className="flex min-h-screen justify-center items-center bg-gradient-to-br from-green-50 to-blue-50 py-12 px-4">
+      <div className="max-w-md w-full">
+        <div className="bg-white/90 py-10 px-8 shadow-2xl rounded-2xl border border-gray-100 backdrop-blur-md flex flex-col items-center animate-fade-in-up">
+          <div className="w-28 h-28 rounded-full overflow-hidden shadow-lg border-4 border-blue-200 mb-4">
+            <img
+              src={image}
+              alt="Dog"
+              className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+            />
+          </div>
+          <h2 className="text-2xl font-bold text-gray-800 mb-1 tracking-tight">
             {user.firstName} {user.lastName}
           </h2>
-          <p className="text-gray-600 mb-0">DOB: {user.dob}</p>
-          <p className="text-gray-600 mb-0">Age: {calculateAge(user.dob)}</p>
+          <p className="text-gray-500 text-base mb-1">DOB: {user.dob}</p>
+          <p className="text-gray-500 text-base mb-4">Age: {calculateAge(user.dob)}</p>
           <Link
             to="/"
-            className="inline-block mt-[10px] px-4 cursor-pointer py-2 text-center bg-green-500 rounded border border-transparent shadow-sm text-white font-medium hover:bg-green-600 focus:outline-none focus:ring-1 focus:ring-green-400"
+            className="w-full px-4 py-2 mt-2 text-center bg-gradient-to-r from-blue-500 to-green-500 rounded-lg border border-transparent shadow-md text-white font-semibold text-lg hover:from-blue-600 hover:to-green-600 focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 transform hover:scale-105 hover:shadow-xl"
           >
             Go Back
           </Link>

@@ -96,86 +96,88 @@ export default function UserForm() {
   };
 
   return (
-    <div className="flex min-h-screen mx-auto justify-center items-center bg-[#fffbfbed] py-12 px-4">
-      <div className=" max-w-md w-full space-y-8">
-        <form className=" bg-[#cfe3deb5] py-8 px-6 shadow-2xl rounded-lg mb-0 space-y-5">
+    <div className="flex min-h-screen justify-center items-center bg-gradient-to-br from-green-50 to-blue-50 py-12 px-4">
+      <div className="max-w-md w-full">
+        <form
+          className="bg-white/90 py-10 px-8 shadow-2xl rounded-2xl space-y-7 border border-gray-100 backdrop-blur-md animate-fade-in-up"
+          onSubmit={handleSubmit}
+        >
           <div>
             <label
               htmlFor="firstName"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-semibold text-gray-700 mb-1"
             >
               First Name
             </label>
-            <div className="mt-1">
-              <input
-                type="text"
-                name="firstName"
-                id="firstName"
-                value={formData.firstName}
-                onChange={handleChange}
-                onKeyPress={(event) => {
-                  if (!/^[A-Za-z ]+$/.test(event.key)) {
-                    event.preventDefault();
-                  }
-                }}
-                placeholder="Enter First Name"
-                className="appearance-none px-3 py-2 w-full placeholder-gray-700 text-gray-700 border border-gray-300 rounded shadow-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
-              />
-              <small className="text-[red]">{errors.firstName}</small>
-            </div>
+            <input
+              type="text"
+              name="firstName"
+              id="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
+              onKeyPress={(event) => {
+                if (!/^[A-Za-z ]+$/.test(event.key)) {
+                  event.preventDefault();
+                }
+              }}
+              placeholder="Enter First Name"
+              className={`transition-all duration-200 appearance-none px-4 py-2 w-full placeholder-gray-400 text-gray-900 border rounded-lg shadow-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:scale-[1.03] focus:shadow-lg ${errors.firstName ? 'border-red-400' : 'border-gray-300'}`}
+            />
+            {errors.firstName && (
+              <small className="text-red-500 font-medium mt-1 block animate-fade-in">{errors.firstName}</small>
+            )}
           </div>
 
           <div>
             <label
               htmlFor="lastName"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-semibold text-gray-700 mb-1"
             >
               Last Name
             </label>
-            <div className="mt-1">
-              <input
-                type="text"
-                name="lastName"
-                id="lastName"
-                value={formData.lastName}
-                onChange={handleChange}
-                onKeyPress={(event) => {
-                  if (!/^[A-Za-z ]+$/.test(event.key)) {
-                    event.preventDefault();
-                  }
-                }}
-                placeholder="Enter Last Name"
-                className="appearance-none px-3 py-2 w-full placeholder-gray-700 text-gray-700 border border-gray-300 rounded shadow-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
-              />
-              <small className="text-[red]">{errors.lastName}</small>
-            </div>
+            <input
+              type="text"
+              name="lastName"
+              id="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
+              onKeyPress={(event) => {
+                if (!/^[A-Za-z ]+$/.test(event.key)) {
+                  event.preventDefault();
+                }
+              }}
+              placeholder="Enter Last Name"
+              className={`transition-all duration-200 appearance-none px-4 py-2 w-full placeholder-gray-400 text-gray-900 border rounded-lg shadow-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:scale-[1.03] focus:shadow-lg ${errors.lastName ? 'border-red-400' : 'border-gray-300'}`}
+            />
+            {errors.lastName && (
+              <small className="text-red-500 font-medium mt-1 block animate-fade-in">{errors.lastName}</small>
+            )}
           </div>
 
           <div>
             <label
               htmlFor="dob"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-semibold text-gray-700 mb-1"
             >
               Date Of Birth
             </label>
-            <div className="mt-1">
-              <input
-                type="date"
-                name="dob"
-                id="dob"
-                value={formData.dob}
-                onChange={handleChange}
-                max={new Date().toISOString().split("T")[0]}
-                className="appearance-none px-3 py-2 w-full text-gray-700 border border-gray-300 rounded shadow-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
-              />
-              <small className="text-[red]">{errors.dob}</small>
-            </div>
+            <input
+              type="date"
+              name="dob"
+              id="dob"
+              value={formData.dob}
+              onChange={handleChange}
+              max={new Date().toISOString().split("T")[0]}
+              className={`transition-all duration-200 appearance-none px-4 py-2 w-full text-gray-900 border rounded-lg shadow-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:scale-[1.03] focus:shadow-lg ${errors.dob ? 'border-red-400' : 'border-gray-300'}`}
+            />
+            {errors.dob && (
+              <small className="text-red-500 font-medium mt-1 block animate-fade-in">{errors.dob}</small>
+            )}
           </div>
 
           <button
             type="submit"
-            className="w-full px-4 cursor-pointer py-2 text-center bg-green-500 rounded border border-transparent shadow-sm text-white font-medium hover:bg-green-600 focus:outline-none focus:ring-1 focus:ring-green-400"
-            onClick={handleSubmit}
+            className="w-full px-4 py-2 cursor-pointer mt-2 text-center bg-gradient-to-r from-blue-500 to-green-500 rounded-lg border border-transparent shadow-md text-white font-semibold text-lg hover:from-blue-600 hover:to-green-600 focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-200 transform hover:scale-105 hover:shadow-xl"
           >
             Submit
           </button>
